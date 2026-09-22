@@ -14,13 +14,9 @@ public class Main {
                 blockingQueue.size());
 
         Thread thread = new Thread(() -> {
-            try {
-                blockingQueue.dequeue();
-                System.out.println("Размер очереди после удаления элемента: " +
-                        blockingQueue.size());
-            } catch (InterruptedException ex) {
-                System.out.println("Поток был прерван");
-            }
+            blockingQueue.dequeue();
+            System.out.println("Размер очереди после удаления элемента: " +
+                    blockingQueue.size());
         });
         thread.start();
     }
