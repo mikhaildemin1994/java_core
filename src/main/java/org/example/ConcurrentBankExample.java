@@ -22,6 +22,8 @@ public class ConcurrentBankExample {
             transferThread2.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            Thread.currentThread().interrupt();
         }
 
         // Вывод общего баланса
