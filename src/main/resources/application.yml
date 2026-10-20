@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: Financial management system
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID:://googleusercontent.com}
+            client-secret: ${GOOGLE_CLIENT_SECRET:mock-google-client-secret-12345}
+            scope:
+              - email
+              - profile
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      dll-auto: validate
+    show-sql: true
+
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+    enabled: true
+    drop-first: false
+
+custom:
+  startup-logger:
+    enabled: true
