@@ -1,0 +1,45 @@
+spring:
+  datasource:
+#    url: jdbc:postgresql://localhost:5432/management
+#    username: useruser
+#    password: testtest
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+     hibernate:
+       format_sql: true
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+app:
+  startup-logger:
+    enabled: false
+
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ://googleusercontent.com
+            client-secret: mock-google-client-secret-12345
+            scope:
+              - email
+              - password
+
+security:
+  jwt:
+    secret-key: EEJ9A2V8A4IJSGAHBDEUS4T8LFA9NCG5UUARG8E4FJORR9B3AHCGK9E3NHD
+    access-token-expiration-ms: 900000
+    refresh-token-expiration-ms: 86400000

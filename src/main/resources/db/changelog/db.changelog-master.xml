@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+<!--    <changeSet id="1-createDepartmentsTable" author="management">-->
+<!--        <createTable tableName="departments">-->
+<!--            <column name="id" type="bigint" autoIncrement="true">-->
+<!--                <constraints primaryKey="true" nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="name" type="varchar(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="code" type="varchar(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="user_id" type="bigint" autoIncrement="true">-->
+<!--                <constraints nullable="false" foreignKeyName="fk_user" references="user(id)"/>-->
+<!--            </column>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+
+<!--    <changeSet id="2-createAccountTable" author="management">-->
+<!--        <createTable tableName="accounts">-->
+<!--            <column name="id" type="bigint" autoIncrement="true">-->
+<!--                <constraints primaryKey="true" nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="account_type" type="varchar(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="currency" type="varchar(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="balance" type="DECIMAL(19,2)" defaultValueNumeric="0">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="department_id" type="bigint" autoIncrement="true">-->
+<!--                <constraints nullable="false" foreignKeyName="fk_department" references="department(id)"/>-->
+<!--            </column>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+
+<!--    <changeSet id="3-createAuditLogTable" author="management">-->
+<!--        <createTable tableName="audit_logs">-->
+<!--            <column name="id" type="bigint" autoIncrement="true">-->
+<!--                <constraints primaryKey="true" nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="user_id" type="bigint" autoIncrement="true">-->
+<!--                <constraints nullable="false" foreignKeyName="fk_user" references="user(id)"/>-->
+<!--            </column>-->
+<!--            <column name="user_role" type="varchar(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="date_time" type="TIMESTAMP">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+
+<!--    <changeSet id="4-createBudgetTable" author="management">-->
+<!--        <createTable tableName="budgets">-->
+<!--            <column name="id" type="bigint" autoIncrement="true">-->
+<!--                <constraints primaryKey="true" nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="department_id" type="bigint" autoIncrement="true">-->
+<!--                <constraints nullable="false" foreignKeyName="fk_department" references="department(id)"/>-->
+<!--            </column>-->
+<!--            <column name="category_id" type="bigint" autoIncrement="true">-->
+<!--                <constraints nullable="false" foreignKeyName="fk_category" references="category(id)"/>-->
+<!--            </column>-->
+<!--            <column name="amount" type="DECIMAL(19,2)" defaultValueNumeric="0">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="start_of_period" type="DATE">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="end_of_period" type="DATE">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet id="5-createCategoriesTable" author="management">-->
+<!--        <createTable tableName="categories">-->
+<!--            <column name="id" type="bigint" autoIncrement="true">-->
+<!--                <constraints primaryKey="true" nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="name" type="varchar(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="parent_category_id" type="bigint" autoIncrement="true">-->
+<!--                <constraints nullable="false" foreignKeyName="fk_category" references="category(id)"/>-->
+<!--            </column>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet id="5-createCounterpartiesTable" author="management">-->
+<!--        <createTable tableName="counterparties">-->
+<!--            <column name="id" type="bigint" autoIncrement="true">-->
+<!--                <constraints primaryKey="true" nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="name" type="varchar(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="identity" type="varchar(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="counterparty_type" type="varchar(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet id="6-createTransactions" author="management">-->
+<!--        <createTable tableName="transactions">-->
+<!--            <column name="id" type="bigint" autoIncrement="true">-->
+<!--                <constraints primaryKey="true" nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="transaction_type" type="varchar(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="amount" type="DECIMAL(19,2)" defaultValueNumeric="0">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="currency" type="varchar(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="date" type="TIMESTAMP">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="bill" type="varchar(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="category_id" type="bigint" autoIncrement="true">-->
+<!--                <constraints nullable="false" foreignKeyName="fk_category" references="category(id)"/>-->
+<!--            </column>-->
+<!--            <column name="counterparty_id" type="bigint" autoIncrement="true">-->
+<!--                <constraints nullable="false" foreignKeyName="fk_counterparty" references="counterparty(id)"/>-->
+<!--            </column>-->
+<!--            <column name="transaction_status" type="varchar(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="user_id" type="bigint" autoIncrement="true">-->
+<!--                <constraints nullable="false" foreignKeyName="fk_user" references="user(id)"/>-->
+<!--            </column>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet id="7-createUsers" author="management">-->
+<!--        <createTable tableName="users">-->
+<!--            <column name="id" type="bigint" autoIncrement="true">-->
+<!--                <constraints primaryKey="true" nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="user_role" type="varchar(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="e-mail" type="varchar(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="password" type="varchar(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+
+    <changeSet id="1-createDepartmentTable" author="management">
+        <createTable tableName="departments">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="pk_departments" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="code" type="VARCHAR(50)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="uq_department_code"/>
+            </column>
+            <column name="manager_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2-createCounterpartiesTable" author="management">
+        <createTable tableName="counterparties">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_counterparties" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identity" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="counterparty_type" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3-createCategoriesTable" author="management">
+        <createTable tableName="categories">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_categories" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parent_category_id" type="BIGINT"/>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="categories" baseColumnNames="parent_category_id"
+                                 constraintName="fk_categories_parent" referencedTableName="categories"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="4-createAccountsTable" author="management">
+        <createTable tableName="accounts">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_accounts" nullable="false"/>
+            </column>
+            <column name="account_type" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currency" type="VARCHAR(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="balance" type="NUMERIC(19, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="department_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="accounts" baseColumnNames="department_id"
+                                 constraintName="fk_accounts_department" referencedTableName="departments"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="5-createUsersTable" author="management">
+        <createTable tableName="users">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_users" nullable="false"/>
+            </column>
+            <column name="user_role" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="uq_user_email"/>
+            </column>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="department_id" type="BIGINT"/>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="users" baseColumnNames="department_id"
+                                 constraintName="fk_users_department" referencedTableName="departments"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="6-addManagerForeignKeyToDepartments" author="management">
+        <addForeignKeyConstraint baseTableName="departments" baseColumnNames="manager_id"
+                                 constraintName="fk_departments_manager" referencedTableName="users"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="7-createBudgetsTable" author="management">
+        <createTable tableName="budgets">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_budgets" nullable="false"/>
+            </column>
+            <column name="department_id" type="BIGINT"/>
+            <column name="category_id" type="BIGINT"/>
+            <column name="amount" type="NUMERIC(19, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_of_period" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="end_of_period" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="budgets" baseColumnNames="department_id"
+                                 constraintName="fk_budgets_department" referencedTableName="departments"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="budgets" baseColumnNames="category_id"
+                                 constraintName="fk_budgets_category" referencedTableName="categories"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="8-createTransactionsTable" author="management">
+        <createTable tableName="transactions">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_transactions" nullable="false"/>
+            </column>
+            <column name="transaction_type" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="NUMERIC(19, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currency" type="VARCHAR(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_from_id" type="BIGINT"/>
+            <column name="account_to_id" type="BIGINT"/>
+            <column name="category_id" type="BIGINT"/>
+            <column name="counterparty_id" type="BIGINT"/>
+            <column name="transaction_status" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reverse_transaction_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="transactions" baseColumnNames="account_from_id"
+                                 constraintName="fk_transactions_account_from" referencedTableName="accounts"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="transactions" baseColumnNames="account_to_id"
+                                 constraintName="fk_transactions_account_to" referencedTableName="accounts"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="transactions" baseColumnNames="category_id"
+                                 constraintName="fk_transactions_category" referencedTableName="categories"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="transactions" baseColumnNames="counterparty_id"
+                                 constraintName="fk_transactions_counterparty" referencedTableName="counterparties"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="transactions" baseColumnNames="user_id"
+                                 constraintName="fk_transactions_user" referencedTableName="users"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="transactions" baseColumnNames="reverse_transaction_id"
+                                 constraintName="fk_transactions_reverse_ref" referencedTableName="transactions"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="9-createAuditLogsTable" author="management">
+        <createTable tableName="audit_logs">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_audit_logs" nullable="false"/>
+            </column>
+            <column name="transaction_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_role" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_time_of_action" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="action_details" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="audit_logs"
+                                 baseColumnNames="user_id"
+                                 constraintName="fk_audit_logs_user"
+                                 referencedTableName="users"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>
